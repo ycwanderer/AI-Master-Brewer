@@ -4,7 +4,7 @@ import openai
 
 # Define the chatbot function
 def chat_with_model(messages):
-    response = openai.ChatCompletion.create(
+    response = openai.Completion.create(
         model="gpt-3.5-turbo",
         messages=messages,
         max_tokens=100,
