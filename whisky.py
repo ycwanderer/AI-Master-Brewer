@@ -3,7 +3,7 @@ import openai
 import random
 
 # Set up your OpenAI API credentials
-openai.api_key = "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"
+openai.api_key = "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"
 
 # Define the chatbot function
 def chat_with_model(messages):
