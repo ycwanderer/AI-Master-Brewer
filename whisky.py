@@ -5,11 +5,14 @@ import openai
 # Define the chatbot function
 def chat_with_model(messages):
     response = openai.Completion.create(
-        model="gpt-3.5-turbo",
-        messages=messages,
+        engine="text-davinci-003",
+        prompt=messages,
+        temperature=0.9,
         max_tokens=100,
+        n=1,
+        stop=None
     )
-    return response.choices[0].message.content
+    return response.choices[0].text.strip()
 
 # Streamlit app code
 def main():
