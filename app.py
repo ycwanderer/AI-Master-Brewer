@@ -1,8 +1,6 @@
 import streamlit as st
 import openai
 
-# Set up your OpenAI API credentials
-openai.api_key = "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"
 
 # Define the chatbot function
 def chat_with_model(messages):
