@@ -5,19 +5,16 @@ import random
 
 # Define the chatbot function
 def chat_with_model(messages):
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=messages,
-        temperature=0.9,
-        max_tokens=500,
-        n=1,
-        stop=None
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
+        max_tokens=100,
     )
-    return response.choices[0].text.strip()
+    return response.choices[0].message.content
 
 # Streamlit app code
 def main():
-    st.title("AI Master Brewer")
+    st.markdown("<h1 style='color: darkred; font-family: cursive;'>AI Master Brewer</h1>", unsafe_allow_html=True)
 
     # Initialize session state for messages if it doesn't exist
     if 'messages' not in st.session_state:
