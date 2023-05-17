@@ -1,6 +1,5 @@
 import streamlit as st
 import openai
-import random
 
 
 # Define the chatbot function
