@@ -14,7 +14,7 @@ def chat_with_model(messages):
 
 # Streamlit app code
 def main():
-    st.markdown("<h1 style='color: darkred; font-family: cursive;'>AI Master Brewer</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color: darkred; '>AI Master Brewer</h1>", unsafe_allow_html=True)
 
     # Initialize session state for messages if it doesn't exist
     if 'messages' not in st.session_state:
