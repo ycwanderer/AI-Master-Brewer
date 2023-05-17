@@ -4,19 +4,16 @@ import openai
 
 # Define the chatbot function
 def chat_with_model(messages):
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=messages,
-        temperature=0.9,
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
         max_tokens=100,
-        n=1,
-        stop=None
     )
-    return response.choices[0].text.strip()
+    return response.choices[0].message.content
 
 # Streamlit app code
 def main():
-    st.markdown("<h1 style='color: darkred; '>AI Master Brewer</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color: darkred;'>AI Master Brewer</h1>", unsafe_allow_html=True)
 
     # Initialize session state for messages if it doesn't exist
     if 'messages' not in st.session_state:
@@ -50,7 +47,7 @@ def main():
         st.session_state['messages'].append(new_message)
 
         # Get chatbot's response and append it to the conversation
-        conversation_history = "\n".join([message['content'] for message in st.session_state['messages']])
+        conversation_history = [{"role": message['role'], "content": message['content']} for message in st.session_state['messages']]
         bot_response = chat_with_model(conversation_history)
 
         assistant_response = {"role": "assistant", "content": bot_response}
